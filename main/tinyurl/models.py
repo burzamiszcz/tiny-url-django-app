@@ -8,7 +8,10 @@ class Urls(models.Model):
     
     def save(self):
         if not self.tiny_url:
-            hash_object = hashlib.sha256(self.my_field.encode('utf-8'))
+            hash_object = hashlib.sha256(self.main_url.encode('utf-8'))
             tiny_hash = hash_object.hexdigest()[:10]
-            self.tiny_hash = tiny_hash
+            self.tiny_url = tiny_hash
         super().save()
+    
+    def __str__(self) -> str:
+        return self.main_url

@@ -68,6 +68,7 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = 'static/'
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
