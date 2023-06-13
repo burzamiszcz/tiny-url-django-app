@@ -1,5 +1,33 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Submit</button>
-</form>
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+  <title>Tiny Your URL</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Source Sans Pro&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="hero">
+        <div>
+            <h1>Welcome in Tiny URL Django App</h1>
+            <p>This is the app where you can quickly cut your URL to tiny version</p>
+        </div>
+        <form method="post">
+            {% if not tiny_url %}
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">Tiny it!</button>
+
+            {% else %}
+            <p>This is your tiny URL!</p>
+
+            <input type="text" value="www.{{ domain }}/{{ tiny_url }}" disabled>
+            {% endif %}
+        </form>
+
+    </div>  
+</body>
+</html>

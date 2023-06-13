@@ -3,6 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.tinyurl),
-    path('<str:tiny_url>', views.redirect),
-
+    path('<str:tiny_url>', views.tinyurl),
 ]
